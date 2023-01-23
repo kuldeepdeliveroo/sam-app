@@ -8,6 +8,14 @@ import (
 
 func Handle(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	log.Printf("Hello duniya walo!! How are you doing?")
+
+	req, err := json.Marshal(request)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	log.Printf("Request: %v", string(req[:]))
+
 	log.Printf(
 		"Headers: %v",
 		marshal(request.Headers),
